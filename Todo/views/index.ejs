@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+  <head>
+    <title>To Do List</title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src="/js/lib/angular/angular.js" ></script>
+    <script src="/js/lib/angular-animate/angular-animate.js" ></script>
+    <script src="/js/controllers.js" ></script>
+  </head>
+  <body ng-controller="TodoCtrl">
+    <h1>Welcome to {{title}}</h1>
+    <p>Action Feedback:{{feedback}}</p>
+    <ul ng-repeat="item in items">
+    	<li><input type="checkbox" ng-model="item.achieved">
+    	<span ng-class="{strike:item.achieved}">{{item.content}}</span>
+      <span><a href="#" ng-click="delItem(item._id)">Delete</a></span>
+      </li>
+    </ul>
+
+    <div>
+      <a href="#" ng-click="showInput = !showInput" ng-init="showInput = false">Add New Item</a>
+      <div ng-show="showInput">
+      <input label="Content" ng-model="newItem.content" />
+      <select ng-model="newItem.category">
+        <option value="wishlist">Wish List</option>
+        <option value="todolist">Todo List</option>
+        <option value="movielist">Movie List</option>
+      </select>
+      <a href="#" ng-click="addItem()">add</a>
+      </div>
+      
+    </div>
+    
+  </body>
+</html>
